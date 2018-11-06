@@ -40,5 +40,7 @@ menus <- data_pizza %>%
 
 # write files
 restaurants %>% write_csv(file.path("data", "pizza", "restaurants.csv"))
-menus %>% write_delim(file.path("data", "pizza", "menus.csv"), delim='\t')
+restaurants %>% write_xlsx(file.path("data", "pizza", "restaurants.xlsx"))
+
+menus %>% write_csv(file.path("data", "pizza", "menus.csv"))
 menus %>% write_xlsx(file.path("data", "pizza", "menus.xlsx"))
