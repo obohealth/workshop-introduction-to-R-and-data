@@ -34,7 +34,7 @@ restaurants[c(1:4, length(restaurants), 5:(length(restaurants)-1))]
 
 # prepare menus dataset
 menus <- data_pizza %>% 
-  select(starts_with("menu"), -menuPageURL) %>% 
+  select(id, starts_with("menu"), -menuPageURL) %>% 
   mutate(menus.dateSeen = substr(menus.dateSeen, 1, 20)) %>% 
   mutate(menus.dateSeen = format(as.POSIXct(menus.dateSeen), format="%Y,%d+%b"))
 
