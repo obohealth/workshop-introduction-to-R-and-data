@@ -11,6 +11,7 @@
 
 library(tidyverse)
 library(zipcode)
+library(writexl)
 
 # ------------------------------------------------------------------------\
 #     Split pizza dataset from kaggle into two pieces. 
@@ -32,8 +33,12 @@ restaurants <- data_pizza %>%
 restaurants[c(1:4, length(restaurants), 5:(length(restaurants)-1))]
 
 # prepare menus dataset
-menus <- data_pizza %>% select(starts_with("menu"), -menuPageURL)
+menus <- data_pizza %>% 
+  select(starts_with("menu"), -menuPageURL) %>% 
+  mutate(menus.dateSeen = substr(menus.dateSeen, 1, 20)) %>% 
+  mutate(menus.dateSeen = format(as.POSIXct(menus.dateSeen), format="%Y,%d+%b"))
 
 # write files
 restaurants %>% write_csv(file.path("data", "pizza", "restaurants.csv"))
 menus %>% write_delim(file.path("data", "pizza", "menus.csv"), delim='\t')
+menus %>% write_xlsx(file.path("data", "pizza", "menus.xlsx"))
