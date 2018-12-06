@@ -18,6 +18,7 @@ set.seed(0)
 data <- read_csv('data/crane/raw/Huji_JNF_Crane_israel_GPRS.csv',
                  col_types = cols(
                    .default = col_character(),
+                   `event-id` = col_double(),
                    `tag-local-identifier` = col_skip(),
                    `gps:fix-type` = col_skip(),
                    `eobs:start-timestamp` = col_datetime()
