@@ -1,4 +1,4 @@
-# create_datasets.R
+# create_datasets_pizza.R
 # 
 # Author: Jonathan de Bruin
 # Project: Create datasets for workshop
