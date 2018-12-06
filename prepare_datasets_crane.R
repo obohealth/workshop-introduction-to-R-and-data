@@ -19,6 +19,7 @@ data <- read_csv('data/crane/raw/Huji_JNF_Crane_israel_GPRS.csv',
                  col_types = cols(
                    .default = col_character(),
                    `tag-local-identifier` = col_skip(),
+                   `gps:fix-type` = col_skip(),
                    `eobs:start-timestamp` = col_datetime()
                  ))
 
@@ -32,10 +33,10 @@ data <- data %>%
   )
 )
 
-write_csv(data, 'data/crane/Huji_Crane_israel_GPRS.csv', na="")
+write_csv(data, 'data/crane/HUJI_Crane_Israel_GPRS.csv', na="")
 
 # minor test
-data_new <- read_csv('data/crane/Huji_Crane_israel_GPRS.csv')
+data_new <- read_csv('data/crane/HUJI_Crane_Israel_GPRS.csv')
 spec(data_new)
 
 
@@ -48,4 +49,4 @@ data_additional$meas_1 <- rgamma(nrow(data), 2, rate=3)
 data_additional$meas_2 <- rgamma(nrow(data), 1, rate=0.5)
 data_additional$meas_3 <- rgamma(nrow(data), 1.5, rate=2)
 
-write_xlsx(data_additional, 'data/crane/Huji_additional_observations.xlsx')
+write_xlsx(data_additional, 'data/crane/crane_additional_observations.xlsx')
